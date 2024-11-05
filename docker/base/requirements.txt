@@ -6,7 +6,7 @@ djangorestframework==3.11.0
 djangorestframework-jwt==1.11.0
 drf-yasg==1.17.1
 coreschema==0.0.4
-celery==5.0.0
+celery==4.4.6
 kombu==5.0.2
 # mysqlclient==1.4.6
 pycrypto==2.6.1
