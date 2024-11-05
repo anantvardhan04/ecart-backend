@@ -16,102 +16,104 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+PROJECT_ROOT = os.path.dirname(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'q*^ny3o-gx(gr_$5tb%gcweu=n97q73bw94j%if&mmpnht_no5'
+SECRET_KEY = "q*^ny3o-gx(gr_$5tb%gcweu=n97q73bw94j%if&mmpnht_no5"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ["*"]
 CORS_ORIGIN_ALLOW_ALL = True
 
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
     "django.contrib.gis",
-    'django.contrib.staticfiles',
-    'api',
-    'drf_yasg',
-    'corsheaders',
-    'rest_framework',
-    'rest_framework.authtoken',
+    "django.contrib.staticfiles",
+    "api",
+    "drf_yasg",
+    "corsheaders",
+    "rest_framework",
+    "rest_framework.authtoken",
     "django_jsonfield_backport",
-    'django_filters',
+    "django_filters",
     # This app
-    'django_elasticsearch_dsl_drf',
-    'django_elasticsearch_dsl',  # Elasticsearch integration
+    "django_elasticsearch_dsl_drf",
+    "django_elasticsearch_dsl",  # Elasticsearch integration
     # 'aws_xray_sdk.ext.django',
 ]
 
 MIDDLEWARE = [
     # 'aws_xray_sdk.ext.django.middleware.XRayMiddleware',
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware'
+    "django.middleware.security.SecurityMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = 'amcart_search.urls'
+ROOT_URLCONF = "amcart_search.urls"
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [
             os.path.join(PROJECT_ROOT, "templates"),
-            os.path.join(PROJECT_ROOT, "api", "templates")
+            os.path.join(PROJECT_ROOT, "api", "templates"),
         ],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.debug",
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
             ],
         },
     },
 ]
 
-WSGI_APPLICATION = 'amcart_search.wsgi.application'
+WSGI_APPLICATION = "amcart_search.wsgi.application"
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = 'Europe/Paris'
+TIME_ZONE = "Europe/Paris"
 
 USE_I18N = True
 
@@ -122,69 +124,61 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_URL = '/api/static/'
+STATIC_URL = "/api/static/"
 SWAGGER_SETTINGS = {
-    'USE_SESSION_AUTH': False,
-    'SECURITY_DEFINITIONS': {
-        'Token': {
-            'type': 'apiKey',
-            'name': 'Authorization',
-            'in': 'header'
-        }
+    "USE_SESSION_AUTH": False,
+    "SECURITY_DEFINITIONS": {
+        "Token": {"type": "apiKey", "name": "Authorization", "in": "header"}
     },
-    'DEFAULT_FIELD_INSPECTORS': [
-        'drf_yasg.inspectors.CamelCaseJSONFilter',
-        'drf_yasg.inspectors.InlineSerializerInspector',
-        'drf_yasg.inspectors.RelatedFieldInspector',
-        'drf_yasg.inspectors.ChoiceFieldInspector',
-        'drf_yasg.inspectors.FileFieldInspector',
-        'drf_yasg.inspectors.DictFieldInspector',
-        'drf_yasg.inspectors.SimpleFieldInspector',
-        'drf_yasg.inspectors.StringDefaultFieldInspector',
+    "DEFAULT_FIELD_INSPECTORS": [
+        "drf_yasg.inspectors.CamelCaseJSONFilter",
+        "drf_yasg.inspectors.InlineSerializerInspector",
+        "drf_yasg.inspectors.RelatedFieldInspector",
+        "drf_yasg.inspectors.ChoiceFieldInspector",
+        "drf_yasg.inspectors.FileFieldInspector",
+        "drf_yasg.inspectors.DictFieldInspector",
+        "drf_yasg.inspectors.SimpleFieldInspector",
+        "drf_yasg.inspectors.StringDefaultFieldInspector",
     ],
 }
 
 JWT_AUTH = {
-    'JWT_ENCODE_HANDLER': 'rest_framework_jwt.utils.jwt_encode_handler',
-    'JWT_DECODE_HANDLER': 'rest_framework_jwt.utils.jwt_decode_handler',
-    'JWT_PAYLOAD_HANDLER': 'rest_framework_jwt.utils.jwt_payload_handler',
-
-    'JWT_PAYLOAD_GET_USER_ID_HANDLER': 'rest_framework_jwt.utils.jwt_get_user_id_from_payload_handler',
-
-    'JWT_RESPONSE_PAYLOAD_HANDLER': 'rest_framework_jwt.utils.jwt_response_payload_handler',
-
-    'JWT_SECRET_KEY': SECRET_KEY,
-    'JWT_GET_USER_SECRET_KEY': None,
-    'JWT_PUBLIC_KEY': None,
-    'JWT_PRIVATE_KEY': None,
-    'JWT_ALGORITHM': 'HS256',
-    'JWT_VERIFY': True,
-    'JWT_VERIFY_EXPIRATION': True,
-    'JWT_LEEWAY': 0,
-    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=1),
-    'JWT_AUDIENCE': None,
-    'JWT_ISSUER': None,
-    'JWT_ALLOW_REFRESH': False,
-    'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=7),
-    'JWT_AUTH_HEADER_PREFIX': 'Token',
-    'JWT_AUTH_COOKIE': None,
-
+    "JWT_ENCODE_HANDLER": "rest_framework_jwt.utils.jwt_encode_handler",
+    "JWT_DECODE_HANDLER": "rest_framework_jwt.utils.jwt_decode_handler",
+    "JWT_PAYLOAD_HANDLER": "rest_framework_jwt.utils.jwt_payload_handler",
+    "JWT_PAYLOAD_GET_USER_ID_HANDLER": "rest_framework_jwt.utils.jwt_get_user_id_from_payload_handler",
+    "JWT_RESPONSE_PAYLOAD_HANDLER": "rest_framework_jwt.utils.jwt_response_payload_handler",
+    "JWT_SECRET_KEY": SECRET_KEY,
+    "JWT_GET_USER_SECRET_KEY": None,
+    "JWT_PUBLIC_KEY": None,
+    "JWT_PRIVATE_KEY": None,
+    "JWT_ALGORITHM": "HS256",
+    "JWT_VERIFY": True,
+    "JWT_VERIFY_EXPIRATION": True,
+    "JWT_LEEWAY": 0,
+    "JWT_EXPIRATION_DELTA": datetime.timedelta(days=1),
+    "JWT_AUDIENCE": None,
+    "JWT_ISSUER": None,
+    "JWT_ALLOW_REFRESH": False,
+    "JWT_REFRESH_EXPIRATION_DELTA": datetime.timedelta(days=7),
+    "JWT_AUTH_HEADER_PREFIX": "Token",
+    "JWT_AUTH_COOKIE": None,
 }
 
-RESET_PASSWORD_VALIDITY = 30 # in minutes
+RESET_PASSWORD_VALIDITY = 30  # in minutes
 
 STATIC_ROOT = os.path.join(PROJECT_ROOT, "assest")
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
+    "DEFAULT_AUTHENTICATION_CLASSES": (
         # 'rest_framework.authentication.TokenAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
+        "rest_framework.authentication.SessionAuthentication",
         # 'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
     ),
-    'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',),
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10,
-    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
+    "DEFAULT_FILTER_BACKENDS": ("django_filters.rest_framework.DjangoFilterBackend",),
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+    "PAGE_SIZE": 10,
+    "DEFAULT_SCHEMA_CLASS": "rest_framework.schemas.coreapi.AutoSchema",
     # 'DEFAULT_RENDERER_CLASSES': (
     #      'rest_framework.renderers.JSONRenderer',
     #  ),
@@ -201,30 +195,35 @@ MACHINE_HOST_NAME = socket.gethostname()
 
 # Name of the Elasticsearch index
 ELASTICSEARCH_INDEX_NAMES = {
-    'api.v1.search.documents.search_document': 'product',
+    "api.v1.search.documents.search_document": "product",
 }
 from urllib.parse import quote_plus as urlquote
-elastic_search_domain = os.environ.setdefault('ELASTIC_SEARCH_DOMAIN','localhost')
-elastic_search_port = int(os.environ.setdefault('ELASTIC_SEARCH_PORT','9200'))
-elastic_search_user = os.environ.setdefault('ELASTIC_SEARCH_USER_NAME','elastic')
-elastic_search_password = 'asdf' #os.environ.setdefault('ELASTIC_SEARCH_PASSWORD','asdf')
 
-elk_base_url = 'http://elastic:asdf@localhost:9200'
-ELASTIC_SEARCH_URL = elk_base_url.format(user_name=elastic_search_user,
-                                         password=urlquote(elastic_search_password),
-                                         # password may contain special characters
-                                         host_ip=elastic_search_domain,
-                                         host_port=elastic_search_port)
+elastic_search_domain = os.environ.setdefault("ELASTIC_SEARCH_DOMAIN", "localhost")
+elastic_search_port = int(os.environ.setdefault("ELASTIC_SEARCH_PORT", "9200"))
+elastic_search_user = os.environ.setdefault("ELASTIC_SEARCH_USER_NAME", "elastic")
+elastic_search_password = (
+    "asdf"  # os.environ.setdefault('ELASTIC_SEARCH_PASSWORD','asdf')
+)
+
+elk_base_url = "http://elastic:asdf@13.235.177.99:9200/"
+ELASTIC_SEARCH_URL = elk_base_url.format(
+    user_name=elastic_search_user,
+    password=urlquote(elastic_search_password),
+    # password may contain special characters
+    host_ip=elastic_search_domain,
+    host_port=elastic_search_port,
+)
 print(ELASTIC_SEARCH_URL)
 
 ELASTICSEARCH_DSL = {
-    'default': {
-        'hosts': str(ELASTIC_SEARCH_URL),
-        'timeout': 30,
+    "default": {
+        "hosts": str(ELASTIC_SEARCH_URL),
+        "timeout": 30,
     },
 }
-ELASTICSEARCH_DATETIME_FORMAT = '%Y-%m-%dT%H:%M:%SZ'
-COSINE_SIMILARITY = float(os.environ.setdefault('COSINE_SIMILARITY','1'))
+ELASTICSEARCH_DATETIME_FORMAT = "%Y-%m-%dT%H:%M:%SZ"
+COSINE_SIMILARITY = float(os.environ.setdefault("COSINE_SIMILARITY", "1"))
 # XRAY_RECORDER = {
 #     'AWS_XRAY_DAEMON_ADDRESS': '127.0.0.1:2000',
 #     'AUTO_INSTRUMENT': True,  # If turned on built-in database queries and template rendering will be recorded as subsegments
